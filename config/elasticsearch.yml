@@ -1,0 +1,70 @@
+# Elasticsearch Configuration for Development/Testing
+# This configuration is NOT suitable for production use
+
+# Cluster Configuration
+cluster.name: "elasticsearch-cluster"
+node.name: "${HOSTNAME}"
+
+# Network Configuration
+network.host: 0.0.0.0
+http.port: 9200
+transport.port: 9300
+
+# Discovery Configuration
+discovery.seed_hosts: ["elasticsearch-1:9300", "elasticsearch-2:9300", "elasticsearch-3:9300"]
+cluster.initial_master_nodes: ["elasticsearch-1", "elasticsearch-2", "elasticsearch-3"]
+
+# Security Configuration
+xpack.security.enabled: false
+xpack.license.self_generated.type: basic
+
+# Node Roles
+node.roles: ["master", "data", "ingest"]
+
+# Memory Configuration
+bootstrap.memory_lock: true
+
+# Index Configuration
+action.auto_create_index: false
+action.destructive_requires_name: true
+
+# Logging Configuration
+logger.level: INFO
+
+# Performance Configuration
+indices.memory.index_buffer_size: 20%
+indices.queries.cache.size: 10%
+indices.fielddata.cache.size: 20%
+
+# Thread Pool Configuration
+thread_pool.write.queue_size: 1000
+thread_pool.search.queue_size: 1000
+
+# Circuit Breaker Configuration
+indices.breaker.total.limit: 70%
+indices.breaker.fielddata.limit: 40%
+indices.breaker.request.limit: 60%
+
+# Recovery Configuration
+cluster.routing.allocation.disk.threshold_enabled: true
+cluster.routing.allocation.disk.watermark.low: 85%
+cluster.routing.allocation.disk.watermark.high: 90%
+cluster.routing.allocation.disk.watermark.flood_stage: 95%
+
+# Snapshot Configuration
+path.repo: ["/usr/share/elasticsearch/backup"]
+
+# Monitoring Configuration
+xpack.monitoring.collection.enabled: true
+xpack.monitoring.collection.interval: 10s
+
+# Watcher Configuration (disabled for basic license)
+xpack.watcher.enabled: false
+
+# Machine Learning Configuration (disabled for basic license)
+xpack.ml.enabled: false
+
+# Security Audit Configuration
+xpack.security.audit.enabled: true
+xpack.security.audit.logfile.events.include: ["access_granted", "access_denied", "anonymous_access_denied", "authentication_failed", "connection_granted", "connection_denied", "tampered_request", "run_as_granted", "run_as_denied"]
+xpack.security.audit.logfile.events.exclude: ["access_granted", "connection_granted", "run_as_granted"]
