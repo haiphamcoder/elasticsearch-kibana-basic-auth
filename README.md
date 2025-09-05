@@ -551,7 +551,7 @@ We welcome contributions to improve this project! Here's how you can help:
 
 ```bash
 # Clone your fork
-git clone https://github.com/yourusername/elasticsearch-kibana-basic-auth.git
+git clone https://github.com/haiphamcoder/elasticsearch-kibana-basic-auth.git
 cd elasticsearch-kibana-basic-auth
 
 # Create development branch
@@ -600,4 +600,3 @@ If you encounter issues or have questions:
 ***Happy Elasticsearch-ing! 🚀***
 
 *This README is maintained by the project contributors. For the latest updates, check the repository.*
-
